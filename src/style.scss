@@ -5,6 +5,7 @@
 
 $colour1: #ff00ff;
 $colour2: #fffff8;
+$colour3: #111111;
 
 $font1: "overseer";
 
@@ -12,10 +13,21 @@ $header-height: 25vh;
 
 * {
   box-sizing: border-box;
+  color: $colour3;
   font-family: sans-serif;
   margin: 0;
   padding: 0;
   text-align: center;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $colour1;
+  border-radius: 3px;
 }
 
 h1,
@@ -54,12 +66,17 @@ h6 {
       }
     }
   }
+  .rules-page-link {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 }
 
 .route {
   max-height: 70vh;
   min-height: 70vh;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 .start-screen {
@@ -90,6 +107,23 @@ h6 {
       margin-top: 8px;
       padding: 12px 0;
       width: 160px;
+    }
+  }
+}
+
+.rules-screen {
+  padding-bottom: 42px;
+  .rules-screen-paragraph {
+    font-size: 21px;
+    margin-top: 42px;
+    margin-left: 50%;
+    max-width: 600px;
+    transform: translateX(-50%);
+  }
+  .rules-screen-rules {
+    margin-top: 42px;
+    .rules-screen-rule {
+      margin-top: 7px;
     }
   }
 }

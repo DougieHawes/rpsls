@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const StartScreen = () => {
+const StartScreen = ({ onClick }) => {
   const quotesArray = [
     "Prepare your neurons—it's game time!",
     "Bazinga! Are your reflexes ready for action?",
@@ -17,7 +17,9 @@ const StartScreen = () => {
       <div className="start-screen-content-container">
         <p className="start-screen-text">"{quotesArray[randInt]}"</p>
         <Link to="/game">
-          <button className="start-screen-button">READY</button>
+          <button className="start-screen-button" onClick={onClick}>
+            READY
+          </button>
         </Link>
       </div>
     </div>
