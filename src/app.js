@@ -27,7 +27,7 @@ const App = () => {
 
   return (
     <div className="app">
-      {/* <audio ref={audioRef} src={music} loop autoPlay /> */}
+      <audio ref={audioRef} src={music} loop autoPlay />
       <header className="header">
         <img className="sheldon" src={sheldon} alt="" />
         <h1 className="title">R.P.S.L.S</h1>
