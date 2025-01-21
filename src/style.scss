@@ -172,6 +172,8 @@ h6 {
       color: $colour4;
       font-family: $font2;
       font-size: 35px;
+      text-shadow: 1px 1px 0 $colour3, -1px -1px 0 $colour3, -1px 1px 0 $colour3,
+        1px -1px 0 $colour3;
     }
     .start-screen-buttons-container {
       display: flex;
