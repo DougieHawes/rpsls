@@ -1,0 +1,95 @@
+@font-face {
+  font-family: "overseer";
+  src: url("./Overseer_Oblique.ttf");
+}
+
+$colour1: #ff00ff;
+$colour2: #fffff8;
+
+$font1: "overseer";
+
+$header-height: 25vh;
+
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font1;
+}
+
+.app {
+  background-blend-mode: screen;
+  background-color: rgba($color: $colour2, $alpha: 0.7);
+  background-image: url("./background.png");
+  background-position: center;
+  background-size: cover;
+  .header {
+    max-height: $header-height;
+    overflow: hidden;
+    .sheldon {
+      height: 140px;
+    }
+    .title {
+      font-size: 42px;
+      letter-spacing: 7px;
+      margin-top: -14px;
+    }
+  }
+  .footer {
+    height: 5vh;
+    .footer-text {
+      span {
+        font-family: $font1;
+        font-size: 21px;
+      }
+    }
+  }
+}
+
+.route {
+  max-height: 70vh;
+  min-height: 70vh;
+  overflow-y: hidden;
+}
+
+.start-screen {
+  position: relative;
+  .start-screen-content-container {
+    position: absolute;
+    top: 42%;
+    width: 100%;
+    .start-screen-text {
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .start-screen-button {
+      background-color: $colour1;
+      border: none;
+      border-radius: 7px;
+      color: $colour2;
+      cursor: pointer;
+      font-size: 21px;
+      margin-top: 14px;
+      padding: 6px 0;
+      transition: 0.6s ease-in-out font-size, 0.6s ease-in-out margin-top,
+        0.6s ease-in-out padding, 0.6s ease-in-out width;
+      width: 140px;
+    }
+    .start-screen-button:hover {
+      font-size: 28px;
+      margin-top: 8px;
+      padding: 12px 0;
+      width: 160px;
+    }
+  }
+}
