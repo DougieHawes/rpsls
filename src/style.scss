@@ -3,9 +3,46 @@
   src: url("./Overseer_Oblique.ttf");
 }
 
+@keyframes dance {
+  0% {
+    transform: rotate(-10deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(-10px);
+  }
+  25% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
 $colour1: #ff00ff;
 $colour2: #fffff8;
 $colour3: #111111;
+$colour4: #008000;
 
 $font1: "overseer";
 
@@ -48,8 +85,18 @@ h6 {
   .header {
     max-height: $header-height;
     overflow: hidden;
-    .sheldon {
-      height: 140px;
+    .sheldon-wrapper {
+      .sheldon {
+        height: 140px;
+      }
+      .sheldon-dancing {
+        animation: dance 1.5s infinite ease-in-out;
+        transform-origin: center;
+        display: inline-block;
+      }
+    }
+    .sheldon-move {
+      animation: move 2.8s infinite ease-in-out;
     }
     .title {
       font-size: 42px;
@@ -67,9 +114,24 @@ h6 {
     }
   }
   .rules-page-link {
+    background-color: $colour1;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 42px;
+    padding: 6px;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 14px;
+    top: 14px;
+  }
+  .music-toggle {
+    background-color: $colour1;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 42px;
+    padding: 6px;
+    position: absolute;
+    right: 14px;
+    top: 90px;
   }
 }
 
@@ -89,24 +151,31 @@ h6 {
       font-size: 28px;
       font-weight: bold;
     }
-    .start-screen-button {
-      background-color: $colour1;
-      border: none;
-      border-radius: 7px;
-      color: $colour2;
-      cursor: pointer;
-      font-size: 21px;
-      margin-top: 14px;
-      padding: 6px 0;
-      transition: 0.6s ease-in-out font-size, 0.6s ease-in-out margin-top,
-        0.6s ease-in-out padding, 0.6s ease-in-out width;
-      width: 140px;
-    }
-    .start-screen-button:hover {
-      font-size: 28px;
-      margin-top: 8px;
-      padding: 12px 0;
-      width: 160px;
+    .start-screen-buttons-container {
+      display: flex;
+      flex-direction: column;
+      .start-screen-button {
+        background-color: $colour1;
+        border: none;
+        border-radius: 7px;
+        color: $colour2;
+        cursor: pointer;
+        font-size: 21px;
+        margin-top: 14px;
+        padding: 6px 0;
+        transition: 0.6s ease-in-out font-size, 0.6s ease-in-out margin-top,
+          0.6s ease-in-out padding, 0.6s ease-in-out width;
+        width: 140px;
+      }
+      .start-screen-button:hover {
+        font-size: 28px;
+        margin-top: 8px;
+        padding: 12px 0;
+        width: 160px;
+      }
+      .start-screen-rules {
+        background-color: $colour4;
+      }
     }
   }
 }
@@ -125,5 +194,10 @@ h6 {
     .rules-screen-rule {
       margin-top: 7px;
     }
+  }
+  .rules-screen-back {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
   }
 }

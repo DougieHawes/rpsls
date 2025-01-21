@@ -15,6 +15,18 @@ const App = () => {
 
   const handleMusic = () => {
     if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  const onMusic = () => {
+    if (audioRef.current) {
       audioRef.current.play();
       setIsPlaying(true);
     }
@@ -25,12 +37,18 @@ const App = () => {
       <audio ref={audioRef} src={music} loop autoPlay />
       <header className="header">
         <Link to="/">
-          <img className="sheldon" src={sheldon} alt="" />
+          <div className={`sheldon-wrapper ${isPlaying && "sheldon-move"}`}>
+            <img
+              className={`sheldon ${isPlaying && "sheldon-dancing"}`}
+              src={sheldon}
+              alt=""
+            />
+          </div>
           <h1 className="title">R.P.S.L.S</h1>
         </Link>
       </header>
       <Routes>
-        <Route path="/" element={<StartScreen onClick={handleMusic} />} />
+        <Route path="/" element={<StartScreen onClick={onMusic} />} />
         <Route path="/rules" element={<RulesScreen />} />
         <Route path="/game" element={<GameScreen />} />
       </Routes>
@@ -41,8 +59,11 @@ const App = () => {
         </a>
       </footer>
       <Link className="rules-page-link" to="/rules">
-        RULES
+        📜
       </Link>
+      <div className="music-toggle" onClick={handleMusic}>
+        {isPlaying ? <>🔇</> : <>🎵</>}
+      </div>
     </div>
   );
 };

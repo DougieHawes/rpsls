@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const RulesScreen = () => {
   return (
@@ -44,6 +44,11 @@ const RulesScreen = () => {
         For me, it’s Tuesday." Sheldon smirks, adjusts his seat, and offers a
         reassuring wave. "Now, don’t feel bad when you lose. Feel bad when you…
         well, you know… click. Bazinga!"
+      </p>
+      <p className="rules-screen-paragraph">
+        <Link className="rules-screen-back" to="/">
+          Now do you understand, muggle? click here to return to homescreen
+        </Link>
       </p>
     </div>
   );

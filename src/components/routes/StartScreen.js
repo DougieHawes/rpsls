@@ -16,11 +16,18 @@ const StartScreen = ({ onClick }) => {
     <div className="route start-screen">
       <div className="start-screen-content-container">
         <p className="start-screen-text">"{quotesArray[randInt]}"</p>
-        <Link to="/game">
-          <button className="start-screen-button" onClick={onClick}>
-            READY
-          </button>
-        </Link>
+        <div className="start-screen-buttons-container">
+          <Link to="/game">
+            <button className="start-screen-button" onClick={onClick}>
+              READY
+            </button>
+          </Link>
+          <Link to="/rules">
+            <button className="start-screen-button start-screen-rules">
+              NOT READY
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
