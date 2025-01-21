@@ -2,6 +2,10 @@
   font-family: "overseer";
   src: url("./Overseer_Oblique.ttf");
 }
+@font-face {
+  font-family: "vt323";
+  src: url("./VT323.ttf");
+}
 
 @keyframes dance {
   0% {
@@ -39,12 +43,28 @@
   }
 }
 
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 $colour1: #ff00ff;
 $colour2: #fffff8;
 $colour3: #111111;
-$colour4: #008000;
+$colour4: #00ff66;
 
 $font1: "overseer";
+$font2: "vt323";
 
 $header-height: 25vh;
 
@@ -148,8 +168,10 @@ h6 {
     top: 42%;
     width: 100%;
     .start-screen-text {
-      font-size: 28px;
-      font-weight: bold;
+      animation: fadeInOut 2s infinite linear;
+      color: $colour4;
+      font-family: $font2;
+      font-size: 35px;
     }
     .start-screen-buttons-container {
       display: flex;
@@ -175,6 +197,7 @@ h6 {
       }
       .start-screen-rules {
         background-color: $colour4;
+        color: $colour3;
       }
     }
   }
@@ -199,5 +222,61 @@ h6 {
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
+  }
+}
+
+.game-over-screen {
+  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
+  .countdown {
+    color: $colour4;
+    font-family: $font2;
+    font-size: 120px;
+    margin-bottom: -14px;
+    margin-top: 14px;
+    text-shadow: 1px 1px 0 $colour3, -1px -1px 0 $colour3, -1px 1px 0 $colour3,
+      1px -1px 0 $colour3;
+  }
+  .game-over-screen-title {
+    color: $colour1;
+    font-size: 120px;
+    font-weight: 100;
+    line-height: 90px;
+  }
+  .game-over-screen-subtitle {
+    animation: fadeInOut 2s infinite linear;
+    font-family: $font2;
+    font-size: 35px;
+    margin-bottom: 14px;
+  }
+  .game-over-screen-buttons {
+    display: flex;
+    flex-direction: column;
+    .game-over-screen-button {
+      background-color: $colour1;
+      border: none;
+      border-radius: 7px;
+      color: $colour2;
+      cursor: pointer;
+      font-size: 21px;
+      margin-left: 50%;
+      margin-top: 14px;
+      padding: 6px 0;
+      transform: translateX(-50%);
+      transition: 0.6s ease-in-out font-size, 0.6s ease-in-out margin-top,
+        0.6s ease-in-out padding, 0.6s ease-in-out width;
+      width: 140px;
+    }
+    .game-over-screen-button:hover {
+      font-size: 28px;
+      margin-top: 8px;
+      padding: 12px 0;
+      width: 160px;
+    }
+    .game-over-restart {
+      background-color: $colour4;
+      color: $colour3;
+    }
   }
 }
