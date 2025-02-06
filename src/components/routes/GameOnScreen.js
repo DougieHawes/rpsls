@@ -86,6 +86,7 @@ const GameOnScreen = () => {
 
   return (
     <div className="route game-on-screen">
+      <p className="game-on-header">Make your choice...</p>
       <div className="choice-container">
         <div className="choice">
           <GiStoneBlock onClick={() => getRoundResult(0)} />
@@ -99,8 +100,10 @@ const GameOnScreen = () => {
         <div className="choice">
           <GiLizardman onClick={() => getRoundResult(3)} />
         </div>
-        <div className="void-choice">
-          <FaQuestionCircle />
+        <div className="void-choice-container">
+          <div className="void-choice">
+            <FaQuestionCircle />
+          </div>
         </div>
         <div className="choice">
           <GiSpockHand onClick={() => getRoundResult(4)} />

@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
 import { FaScroll } from "react-icons/fa";
-import { BiMusic } from "react-icons/bi";
+import { BiVolumeFull, BiVolumeMute } from "react-icons/bi";
 
 import sheldon from "./media/sheldon.png";
 
@@ -37,18 +37,9 @@ const App = () => {
 
   return (
     <div className="app">
-      {/* <audio ref={audioRef} src={music} loop autoPlay /> */}
+      <audio ref={audioRef} src={music} loop autoPlay />
       <header className="header">
         <Link to="/">
-          {/* <div 
-          className={`sheldon-wrapper ${isPlaying && "sheldon-move"}`
-          }>
-            <img
-              className={`sheldon ${isPlaying && "sheldon-dancing"}`}
-              src={sheldon}
-              alt=""
-            />
-          </div> */}
           <div className={`sheldon-wrapper ${isPlaying && "sheldon-move"}`}>
             <img
               className={`sheldon ${isPlaying && "sheldon-dancing"}`}
@@ -70,11 +61,11 @@ const App = () => {
           more projects
         </a>
       </footer>
-      <Link className="rules-page-link" to="/rules">
+      <Link className="upper-button rules-page-link" to="/rules">
         <FaScroll />
       </Link>
-      <div className="music-toggle" onClick={handleMusic}>
-        {isPlaying ? <BiMusic /> : <></>}
+      <div className="upper-button music-toggle" onClick={handleMusic}>
+        {isPlaying ? <BiVolumeFull /> : <BiVolumeMute />}
       </div>
     </div>
   );

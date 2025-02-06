@@ -102,6 +102,7 @@ h6 {
   background-image: url("./media/background.png");
   background-position: center;
   background-size: cover;
+  height: 100vh;
   .header {
     max-height: $header-height;
     overflow: hidden;
@@ -134,24 +135,36 @@ h6 {
     }
   }
   .rules-page-link {
-    background-color: $colour1;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 42px;
-    padding: 6px;
-    position: absolute;
-    right: 14px;
-    top: 14px;
+    top: 7px;
   }
   .music-toggle {
+    top: 70px;
+  }
+  .upper-button {
     background-color: $colour1;
+    border-color: $colour4;
     border-radius: 50%;
+    border-style: solid;
+    border-width: 4px;
     cursor: pointer;
     font-size: 42px;
-    padding: 6px;
+    height: 60px;
+    padding: 5px;
     position: absolute;
-    right: 14px;
-    top: 90px;
+    right: 7px;
+    transition: 0.3s ease-in-out border-color, 0.3s ease-in-out background-color;
+    width: 60px;
+    * {
+      color: $colour4;
+      transition: 0.3s ease-in-out color;
+    }
+  }
+  .upper-button:hover {
+    background-color: $colour4;
+    border-color: $colour1;
+    * {
+      color: $colour1;
+    }
   }
 }
 
@@ -165,7 +178,7 @@ h6 {
   position: relative;
   .start-screen-content-container {
     position: absolute;
-    top: 42%;
+    top: 21%;
     width: 100%;
     .start-screen-text {
       animation: fadeInOut 2s infinite linear;
@@ -231,6 +244,14 @@ h6 {
   max-width: 600px;
   margin: 0 auto;
   padding-top: 21px;
+  .game-on-header {
+    animation: fadeInOut 2s infinite linear;
+    color: $colour4;
+    font-family: $font2;
+    font-size: 35px;
+    text-shadow: 1px 1px 0 $colour3, -1px -1px 0 $colour3, -1px 1px 0 $colour3,
+      1px -1px 0 $colour3;
+  }
   .choice-container {
     display: flex;
     flex-wrap: wrap;
@@ -267,11 +288,18 @@ h6 {
         font-size: 90px;
       }
     }
-    .void-choice {
-      margin-top: 14px;
-      * {
-        color: $colour1;
-        font-size: 90px;
+    .void-choice-container {
+      background-color: $colour1;
+      border-radius: 50%;
+      height: 100px;
+      margin-top: 7px;
+      padding: 6px;
+      width: 100px;
+      .void-choice {
+        * {
+          color: $colour4;
+          font-size: 88px;
+        }
       }
     }
   }
