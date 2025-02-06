@@ -219,24 +219,28 @@ h6 {
 }
 
 .rules-screen {
-  padding-bottom: 42px;
-  .rules-screen-paragraph {
-    font-size: 21px;
-    margin-top: 42px;
-    margin-left: 50%;
-    max-width: 600px;
-    transform: translateX(-50%);
-  }
-  .rules-screen-rules {
-    margin-top: 42px;
-    .rules-screen-rule {
-      margin-top: 7px;
+  .rules-container {
+    .rules-container-row {
+      display: flex;
+      .rules-box {
+        background-color: $colour1;
+        border: 4px solid $colour4;
+        border-radius: 14px;
+        padding: 6px;
+        * {
+          color: $colour2;
+          font-size: 42px;
+        }
+      }
+      .rules-box-beats,
+      .rules-box-and {
+        font-size: 21px;
+        padding-top: 21px;
+      }
+      .rules-box-beats {
+        margin: 0 7px;
+      }
     }
-  }
-  .rules-screen-back {
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
   }
 }
 
