@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { FaQuestionCircle } from "react-icons/fa";
 import {
@@ -9,106 +10,62 @@ import {
 } from "react-icons/gi";
 import { MdContentCut } from "react-icons/md";
 
+import GameOverScreen from "./GameOverScreen";
+
+import { randomNumber, determineWinner, fireGun } from "./functions";
+import { choiceArray, distractedArray } from "./textArrays";
+
 const GameOnScreen = () => {
   const [currentChamber, setCurrentChamber] = useState(0);
   const [bulletChamber, setBulletChamber] = useState(
-    Math.floor(Math.random() * 5)
+    Math.floor(Math.random() * 6)
   );
+  const [buttonsDisabled, setButtonsDisabled] = useState(false);
 
-  const getRoundResult = (userChoice) => {
-    const computerChoice = Math.floor(Math.random() * 5);
-    const distracted = Math.floor(Math.random() * 20);
+  const [userChoice, setUserChoice] = useState("");
+  const [computerChoice, setComputerChoice] = useState("");
 
-    const distractedArray = [
-      "Jeepers! My brain was too busy optimising the perfect move!",
-      "Dammit, Me-ma called right as I was about to dominate!",
-      "Wait! I was recalculating the statistical probabilities—again!",
-      "I was too slow! You can’t rush genius! Strategy requires meticulous precision!",
-      "Leonard distracted me with his predictable mediocrity!",
-      "I wasn't ready! A flaw in my logic matrix—must debug immediately!",
-    ];
-    const choiceArray = ["rock", "paper", "scissors", "lizard", "spock"];
+  const [roundResponse, setRoundResponse] = useState("");
+  const [shootResult, setShootResult] = useState("");
+  const [screenText, setScreenText] = useState("Make your choice...");
 
-    if (distracted === 10) {
-      console.log(
-        distractedArray[Math.floor(Math.random() * 5)] + " You win this round"
-      );
-    } else {
-      console.log("YOU: " + choiceArray[userChoice]);
-      console.log("SHELDON: " + choiceArray[computerChoice] + computerChoice);
+  const [winner, setWinner] = useState("");
+  const [gameOver, setGameOver] = useState(false);
 
-      function determineWinner(UC, CC) {
-        const winningConditions = {
-          0: [2, 3],
-          1: [0, 4],
-          2: [1, 3],
-          3: [1, 4],
-          4: [0, 2],
-        };
-
-        if (UC === CC) {
-          console.log(`Ah! You picked ${choiceArray[UC]} too, let's go again`);
-          return;
-        }
-
-        const fireGun = (lastWinner, CC, BC) => {
-          if (CC === BC) {
-            if (lastWinner === "computer") {
-              console.log("BANG!! YOU LOSE");
-            } else {
-              console.log("BANG!! I LOSE");
-            }
-            setCurrentChamber(0);
-            setBulletChamber(Math.floor(Math.random() * 5));
-          } else {
-            if (lastWinner === "computer") {
-              console.log("Click!! You live to see another round.");
-            } else {
-              console.log("Click!! I live to see another round.");
-            }
-          }
-
-          setCurrentChamber(currentChamber + 1);
-        };
-
-        if (winningConditions[UC].includes(CC)) {
-          console.log("Dammit! How could you beat me?!");
-          fireGun("player", currentChamber, bulletChamber);
-        } else {
-          console.log("I WIN!! Don't feel too bad, you're just a muggle");
-          fireGun("computer", currentChamber, bulletChamber);
-        }
-      }
-
-      determineWinner(userChoice, computerChoice);
-    }
-  };
+  const getRoundResult = (UC) => {};
 
   return (
     <div className="route game-on-screen">
-      <p className="game-on-header">Make your choice...</p>
-      <div className="choice-container">
-        <div className="choice">
-          <GiStoneBlock onClick={() => getRoundResult(0)} />
-        </div>
-        <div className="choice">
-          <GiNotebook onClick={() => getRoundResult(1)} />
-        </div>
-        <div className="choice">
-          <MdContentCut onClick={() => getRoundResult(2)} />
-        </div>
-        <div className="choice">
-          <GiLizardman onClick={() => getRoundResult(3)} />
-        </div>
-        <div className="void-choice-container">
-          <div className="void-choice">
-            <FaQuestionCircle />
+      {gameOver && <GameOverScreen winner={winner} />}
+      {!buttonsDisabled && (
+        <div className="choice-container">
+          <div className="choice">
+            <GiStoneBlock onClick={() => getRoundResult(0)} />
+          </div>
+          <div className="choice">
+            <GiNotebook onClick={() => getRoundResult(1)} />
+          </div>
+          <div className="choice">
+            <MdContentCut onClick={() => getRoundResult(2)} />
+          </div>
+          <div className="choice">
+            <GiLizardman onClick={() => getRoundResult(3)} />
+          </div>
+          <div className="void-choice-container">
+            <div className="void-choice">
+              <FaQuestionCircle />
+            </div>
+          </div>
+          <div className="choice">
+            <GiSpockHand onClick={() => getRoundResult(4)} />
           </div>
         </div>
-        <div className="choice">
-          <GiSpockHand onClick={() => getRoundResult(4)} />
-        </div>
-      </div>
+      )}
+      <p className="game-on-text">{userChoice}</p>
+      <p className="game-on-text">{computerChoice}</p>
+      <p className="game-on-text">{roundResponse}</p>
+      <p className="game-on-text">{shootResult}</p>
+      <p className="game-on-text">{screenText}</p>
     </div>
   );
 };

@@ -10,7 +10,8 @@ import music from "./media/videoplayback.weba";
 
 import StartScreen from "./components/routes/StartScreen";
 import RulesScreen from "./components/routes/RulesScreen";
-import GameScreen from "./components/routes/GameScreen";
+import GameOnScreen from "./components/routes/GameOnScreen";
+import GameOverScreen from "./components/routes/GameOverScreen";
 
 const App = () => {
   const audioRef = useRef(null);
@@ -37,7 +38,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <audio ref={audioRef} src={music} loop autoPlay />
+      {/* <audio ref={audioRef} src={music} loop autoPlay /> */}
       <header className="header">
         <Link to="/">
           <div className={`sheldon-wrapper ${isPlaying && "sheldon-move"}`}>
@@ -53,7 +54,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<StartScreen onClick={onMusic} />} />
         <Route path="/rules" element={<RulesScreen />} />
-        <Route path="/game" element={<GameScreen />} />
+        <Route path="/game" element={<GameOnScreen />} />
       </Routes>
       <footer className="footer">
         <a className="footer-text">
@@ -65,7 +66,7 @@ const App = () => {
         <FaScroll />
       </Link>
       <div className="upper-button music-toggle" onClick={handleMusic}>
-        {isPlaying ? <BiVolumeFull /> : <BiVolumeMute />}
+        {isPlaying ? <BiVolumeMute /> : <BiVolumeFull />}
       </div>
     </div>
   );

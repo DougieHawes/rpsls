@@ -283,14 +283,7 @@ h6 {
   max-width: 600px;
   margin: 0 auto;
   padding-top: 21px;
-  .game-on-header {
-    animation: fadeInOut 2s infinite linear;
-    color: $colour4;
-    font-family: $font2;
-    font-size: 35px;
-    text-shadow: 1px 1px 0 $colour3, -1px -1px 0 $colour3, -1px 1px 0 $colour3,
-      1px -1px 0 $colour3;
-  }
+
   .choice-container {
     display: flex;
     flex-wrap: wrap;
@@ -342,6 +335,14 @@ h6 {
       }
     }
   }
+  .game-on-text {
+    animation: fadeInOut 2s infinite linear;
+    color: $colour4;
+    font-family: $font2;
+    font-size: 35px;
+    text-shadow: 1px 1px 0 $colour3, -1px -1px 0 $colour3, -1px 1px 0 $colour3,
+      1px -1px 0 $colour3;
+  }
 }
 
 .game-over-screen {
@@ -353,7 +354,6 @@ h6 {
     font-family: $font2;
     font-size: 120px;
     margin-bottom: -14px;
-    margin-top: 14px;
     text-shadow: 1px 1px 0 $colour3, -1px -1px 0 $colour3, -1px 1px 0 $colour3,
       1px -1px 0 $colour3;
   }

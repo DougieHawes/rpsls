@@ -1,24 +1,20 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const GameOverScreen = ({ onClick }) => {
+import { userLoseArray, userWinArray } from "./textArrays";
+
+const GameOverScreen = ({ winner }) => {
   const [quote, setQuote] = useState("");
   const [countdown, setCountdown] = useState(9);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    const quotesArray = [
-      "Well, that was a valiant attempt. But, of course, it was doomed to failure. You’re no match for my superior intellect.",
-      "You know, if you'd studied quantum mechanics or had an encyclopedic knowledge of string theory, perhaps you could have done better. But then again, who could?",
-      "How... delightful. You’ve achieved the gaming equivalent of a Schrödinger’s cat – both dead and a failure at the same time.",
-      "A valiant effort. But your defeat was as inevitable as the second law of thermodynamics. No one escapes entropy.",
-      "It's not your fault. It's simply the limitations of your inferior brain. Not everyone can operate at a genius level like I can.",
-      "I suppose you did your best... which, by definition, is a rather sad commentary on your capabilities.",
-    ];
+    const gameOverArray = winner === "user" ? userWinArray : userLoseArray;
 
-    const randInt = Math.floor(Math.random() * quotesArray.length);
+    const randInt = Math.floor(Math.random() * gameOverArray.length);
 
-    setQuote(quotesArray[randInt]);
+    setQuote(gameOverArray[randInt]);
   }, [quote]);
 
   useEffect(() => {
@@ -47,12 +43,9 @@ const GameOverScreen = ({ onClick }) => {
         <Link to="/" className="game-over-screen-button">
           HOME
         </Link>
-        <div
-          onClick={onClick}
-          className="game-over-screen-button game-over-restart"
-        >
+        <Link to="/game" className="game-over-screen-button game-over-restart">
           TRY AGAIN
-        </div>
+        </Link>
       </div>
     </div>
   );
