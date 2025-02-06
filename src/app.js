@@ -1,9 +1,12 @@
 import { useState, useRef } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 
-import sheldon from "./sheldon.png";
+import { FaScroll } from "react-icons/fa";
+import { BiMusic } from "react-icons/bi";
 
-import music from "./videoplayback.weba";
+import sheldon from "./media/sheldon.png";
+
+import music from "./media/videoplayback.weba";
 
 import StartScreen from "./components/routes/StartScreen";
 import RulesScreen from "./components/routes/RulesScreen";
@@ -34,9 +37,18 @@ const App = () => {
 
   return (
     <div className="app">
-      <audio ref={audioRef} src={music} loop autoPlay />
+      {/* <audio ref={audioRef} src={music} loop autoPlay /> */}
       <header className="header">
         <Link to="/">
+          {/* <div 
+          className={`sheldon-wrapper ${isPlaying && "sheldon-move"}`
+          }>
+            <img
+              className={`sheldon ${isPlaying && "sheldon-dancing"}`}
+              src={sheldon}
+              alt=""
+            />
+          </div> */}
           <div className={`sheldon-wrapper ${isPlaying && "sheldon-move"}`}>
             <img
               className={`sheldon ${isPlaying && "sheldon-dancing"}`}
@@ -59,10 +71,10 @@ const App = () => {
         </a>
       </footer>
       <Link className="rules-page-link" to="/rules">
-        📜
+        <FaScroll />
       </Link>
       <div className="music-toggle" onClick={handleMusic}>
-        {isPlaying ? <>🔇</> : <>🎵</>}
+        {isPlaying ? <BiMusic /> : <></>}
       </div>
     </div>
   );

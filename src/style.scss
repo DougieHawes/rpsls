@@ -1,10 +1,10 @@
 @font-face {
   font-family: "overseer";
-  src: url("./Overseer_Oblique.ttf");
+  src: url("./media/Overseer_Oblique.ttf");
 }
 @font-face {
   font-family: "vt323";
-  src: url("./VT323.ttf");
+  src: url("./media/VT323.ttf");
 }
 
 @keyframes dance {
@@ -99,7 +99,7 @@ h6 {
 .app {
   background-blend-mode: screen;
   background-color: rgba($color: $colour2, $alpha: 0.7);
-  background-image: url("./background.png");
+  background-image: url("./media/background.png");
   background-position: center;
   background-size: cover;
   .header {
@@ -224,6 +224,56 @@ h6 {
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
+  }
+}
+
+.game-on-screen {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 21px;
+  .choice-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 300px;
+    .choice {
+      background-color: $colour1;
+      border-color: $colour4;
+      border-radius: 14px;
+      border-style: solid;
+      border-width: 4px;
+      cursor: pointer;
+      height: 90px;
+      margin-top: 14px;
+      max-width: 81px;
+      min-width: 90px;
+      padding-left: 0;
+      padding-top: 5px;
+      transition: 0.3s ease-in-out border-width, 0.3s ease-in-out padding-left,
+        0.3s ease-in-out padding-top;
+      width: 100%;
+      * {
+        color: $colour2;
+        font-size: 70px;
+        transition: 0.3s ease-in-out font-size;
+      }
+    }
+    .choice:hover {
+      border-width: 0;
+      padding-left: -5px;
+      padding-top: 0px;
+      * {
+        font-size: 90px;
+      }
+    }
+    .void-choice {
+      margin-top: 14px;
+      * {
+        color: $colour1;
+        font-size: 90px;
+      }
+    }
   }
 }
 
