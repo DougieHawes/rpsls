@@ -141,8 +141,8 @@ h6 {
     top: 70px;
   }
   .upper-button {
-    background-color: $colour1;
-    border-color: $colour4;
+    background-color: $colour4;
+    border-color: $colour1;
     border-radius: 50%;
     border-style: solid;
     border-width: 4px;
@@ -155,15 +155,15 @@ h6 {
     transition: 0.3s ease-in-out border-color, 0.3s ease-in-out background-color;
     width: 60px;
     * {
-      color: $colour4;
+      color: $colour1;
       transition: 0.3s ease-in-out color;
     }
   }
   .upper-button:hover {
-    background-color: $colour4;
-    border-color: $colour1;
+    background-color: $colour1;
+    border-color: $colour4;
     * {
-      color: $colour1;
+      color: $colour4;
     }
   }
 }
@@ -197,15 +197,14 @@ h6 {
         border-radius: 7px;
         color: $colour2;
         cursor: pointer;
-        font-size: 21px;
+        font-size: 35px;
         margin-top: 14px;
         padding: 6px 0;
-        transition: 0.6s ease-in-out font-size, 0.6s ease-in-out margin-top,
-          0.6s ease-in-out padding, 0.6s ease-in-out width;
+        transition: 0.6s ease-in-out margin-top, 0.6s ease-in-out padding,
+          0.6s ease-in-out width;
         width: 140px;
       }
       .start-screen-button:hover {
-        font-size: 28px;
         margin-top: 8px;
         padding: 12px 0;
         width: 160px;
@@ -219,27 +218,63 @@ h6 {
 }
 
 .rules-screen {
+  .rules-introduction {
+    font-size: 21px;
+    margin: 7px 6%;
+    text-align: justify;
+    .rules-link {
+      color: $colour1;
+      font-weight: 800;
+    }
+  }
   .rules-container {
-    .rules-container-row {
-      display: flex;
+    .rules-box-container {
+      width: 160px;
+      .rules-box-beats {
+        margin-bottom: -7px;
+      }
+      .rules-box-heading {
+        font-size: 21px;
+        font-weight: 800;
+      }
       .rules-box {
         background-color: $colour1;
         border: 4px solid $colour4;
         border-radius: 14px;
+        height: 80px;
+        margin-left: 50%;
         padding: 6px;
+        transform: translateX(-50%);
+        width: 80px;
         * {
           color: $colour2;
-          font-size: 42px;
+          font-size: 60px;
         }
       }
-      .rules-box-beats,
-      .rules-box-and {
-        font-size: 21px;
-        padding-top: 21px;
-      }
-      .rules-box-beats {
-        margin: 0 7px;
-      }
+    }
+    .rules-box-and {
+      font-size: 70px;
+      padding-top: 35px;
+    }
+    .rules-container-upper {
+      margin: 0 auto;
+      width: 160px;
+    }
+    .rules-container-lower {
+      display: flex;
+      justify-content: space-between;
+      margin: -14px auto 14px auto;
+      padding-top: 7px;
+      width: 300px;
+    }
+  }
+  .rules-gun {
+    background-color: $colour4;
+    border: 8px solid $colour1;
+    border-radius: 21px;
+    font-size: 140px;
+    * {
+      color: $colour1;
     }
   }
 }
