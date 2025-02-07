@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { FaQuestionCircle } from "react-icons/fa";
 import {
@@ -21,22 +21,67 @@ const GameOnScreen = () => {
     Math.floor(Math.random() * 6)
   );
   const [buttonsDisabled, setButtonsDisabled] = useState(false);
+  const [nextRoundButton, setNextRoundButton] = useState(false);
+  const [gameOverButton, setGameOverButton] = useState(false);
 
   const [userChoice, setUserChoice] = useState("");
   const [computerChoice, setComputerChoice] = useState("");
 
-  const [roundResponse, setRoundResponse] = useState("");
   const [shootResult, setShootResult] = useState("");
-  const [screenText, setScreenText] = useState("Make your choice...");
+  const [screenText, setScreenText] = useState("");
 
   const [winner, setWinner] = useState("");
-  const [gameOver, setGameOver] = useState(false);
 
-  const getRoundResult = (UC) => {};
+  const getRoundResult = (UC) => {
+    setScreenText("");
+    setButtonsDisabled(true);
+
+    const CC = randomNumber(5);
+
+    setUserChoice(choiceArray[UC]);
+    setComputerChoice(choiceArray[CC]);
+
+    const roundResult = determineWinner(UC, CC);
+
+    setScreenText(roundResult[0]);
+
+    if (roundResult[1] === "tie") {
+      setNextRoundButton(true);
+    } else {
+      if (roundResult[1] === "win") {
+        const shootResult = fireGun("computer", currentChamber, bulletChamber);
+        setShootResult(shootResult[0]);
+        if (shootResult[1] === "BANG") {
+          setWinner("user");
+          setGameOverButton(true);
+        } else {
+          setNextRoundButton(true);
+        }
+      } else {
+        const shootResult = fireGun("user", currentChamber, bulletChamber);
+        setShootResult(shootResult[0]);
+        if (shootResult[1] === "BANG") {
+          setWinner("computer");
+          setGameOverButton(true);
+        } else {
+          setNextRoundButton(true);
+        }
+      }
+      setCurrentChamber(currentChamber + 1);
+    }
+  };
+
+  const clearFields = () => {
+    setButtonsDisabled(false);
+    setUserChoice("");
+    setComputerChoice("");
+    setShootResult("");
+    setScreenText("");
+    setNextRoundButton(false);
+  };
 
   return (
     <div className="route game-on-screen">
-      {gameOver && <GameOverScreen winner={winner} />}
       {!buttonsDisabled && (
         <div className="choice-container">
           <div className="choice">
@@ -61,11 +106,30 @@ const GameOnScreen = () => {
           </div>
         </div>
       )}
-      <p className="game-on-text">{userChoice}</p>
-      <p className="game-on-text">{computerChoice}</p>
-      <p className="game-on-text">{roundResponse}</p>
-      <p className="game-on-text">{shootResult}</p>
-      <p className="game-on-text">{screenText}</p>
+      <div className="results-text">
+        {userChoice && (
+          <p className="game-on-text user-choice">You chose {userChoice}</p>
+        )}
+        {computerChoice && (
+          <p className="game-on-text computer-choice">
+            I chose {computerChoice}
+          </p>
+        )}
+        {screenText && <p className="game-on-text screen-text">{screenText}</p>}
+        {shootResult && (
+          <p className="game-on-text shoot-result">{shootResult}</p>
+        )}
+      </div>
+      {nextRoundButton && (
+        <button className="next-button" onClick={clearFields}>
+          NEXT
+        </button>
+      )}
+      {gameOverButton && (
+        <Link to="/gameover" className="next-button">
+          NEXT
+        </Link>
+      )}
     </div>
   );
 };

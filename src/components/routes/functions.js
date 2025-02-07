@@ -1,15 +1,10 @@
 import { choiceArray } from "./textArrays";
 
-export const randomNumber = (n) => {
-  return Math.floor(Math.random * n);
-};
+export const randomNumber = (n) => Math.floor(Math.random() * n);
 
-export function determineWinner(userChoice, computerChoice) {
-  if (userChoice === computerChoice) {
-    return [
-      `Ah! You picked ${choiceArray[userChoice]} too, let's go again`,
-      "tie",
-    ];
+export function determineWinner(UC, CC) {
+  if (UC === CC) {
+    return [`Ah! You picked ${choiceArray[UC]} too, let's go again`, "tie"];
   }
 
   const winningConditions = {
@@ -20,7 +15,7 @@ export function determineWinner(userChoice, computerChoice) {
     4: [0, 2], // Spock beats Rock & Scissors
   };
 
-  if (winningConditions[userChoice].includes(computerChoice)) {
+  if (winningConditions[UC].includes(CC)) {
     return ["Dammit! How could you beat me?!", "win"];
   } else {
     return ["I WIN!! Don't feel too bad, you're just a muggle", "lose"];

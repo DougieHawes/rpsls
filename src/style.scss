@@ -58,6 +58,12 @@
   }
 }
 
+@keyframes showText {
+  to {
+    opacity: 1;
+  }
+}
+
 $colour1: #ff00ff;
 $colour2: #fffff8;
 $colour3: #111111;
@@ -283,7 +289,45 @@ h6 {
   max-width: 600px;
   margin: 0 auto;
   padding-top: 21px;
-
+  .results-text {
+    .game-on-text {
+      color: $colour4;
+      font-family: $font2;
+      font-size: 35px;
+      text-shadow: 1px 1px 0 $colour3, -1px -1px 0 $colour3, -1px 1px 0 $colour3,
+        1px -1px 0 $colour3;
+    }
+    .user-choice {
+    }
+    .computer-choice {
+      animation: showText 0s linear forwards;
+      animation-delay: 2s;
+      opacity: 0;
+    }
+    .screen-text {
+      animation: showText 0s linear forwards;
+      animation-delay: 4s;
+      opacity: 0;
+    }
+    .shoot-result {
+      animation: showText 0s linear forwards;
+      animation-delay: 6s;
+      opacity: 0;
+    }
+  }
+  .next-button {
+    animation: showText 0s linear forwards;
+    animation-delay: 7s;
+    background-color: $colour1;
+    border: 4px solid $colour4;
+    border-radius: 6px;
+    color: $colour4;
+    cursor: pointer;
+    font-size: 28px;
+    opacity: 0;
+    padding: 7px;
+    width: 100%;
+  }
   .choice-container {
     display: flex;
     flex-wrap: wrap;
@@ -334,14 +378,6 @@ h6 {
         }
       }
     }
-  }
-  .game-on-text {
-    animation: fadeInOut 2s infinite linear;
-    color: $colour4;
-    font-family: $font2;
-    font-size: 35px;
-    text-shadow: 1px 1px 0 $colour3, -1px -1px 0 $colour3, -1px 1px 0 $colour3,
-      1px -1px 0 $colour3;
   }
 }
 

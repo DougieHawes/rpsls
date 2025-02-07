@@ -38,7 +38,7 @@ const App = () => {
 
   return (
     <div className="app">
-      {/* <audio ref={audioRef} src={music} loop autoPlay /> */}
+      <audio ref={audioRef} src={music} loop />
       <header className="header">
         <Link to="/">
           <div className={`sheldon-wrapper ${isPlaying && "sheldon-move"}`}>
@@ -55,6 +55,7 @@ const App = () => {
         <Route path="/" element={<StartScreen onClick={onMusic} />} />
         <Route path="/rules" element={<RulesScreen />} />
         <Route path="/game" element={<GameOnScreen />} />
+        <Route path="/gameover" element={<GameOverScreen />} />
       </Routes>
       <footer className="footer">
         <a className="footer-text">
