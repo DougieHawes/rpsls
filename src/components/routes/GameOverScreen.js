@@ -12,9 +12,7 @@ const GameOverScreen = ({ winner }) => {
   useEffect(() => {
     const gameOverArray = winner === "user" ? userWinArray : userLoseArray;
 
-    const randInt = Math.floor(Math.random() * gameOverArray.length);
-
-    setQuote(gameOverArray[randInt]);
+    setQuote(gameOverArray[Math.floor(Math.random() * gameOverArray.length)]);
   }, [quote]);
 
   useEffect(() => {
@@ -37,7 +35,9 @@ const GameOverScreen = ({ winner }) => {
   return (
     <div className="route game-over-screen">
       <div className="countdown">{countdown}</div>
-      <h2 className="game-over-screen-title">GAME OVER</h2>
+      <h2 className="game-over-screen-title">
+        {winner === "user" ? "YOU WIN" : "YOU LOSE"}
+      </h2>
       <p className="game-over-screen-subtitle">"{quote}"</p>
       <div className="game-over-screen-buttons">
         <Link to="/" className="game-over-screen-button">

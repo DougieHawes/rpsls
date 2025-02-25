@@ -16,6 +16,7 @@ import GameOverScreen from "./components/routes/GameOverScreen";
 const App = () => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [winner, setWinner] = useState("");
 
   const handleMusic = () => {
     if (audioRef.current) {
@@ -54,8 +55,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<StartScreen onClick={onMusic} />} />
         <Route path="/rules" element={<RulesScreen />} />
-        <Route path="/game" element={<GameOnScreen />} />
-        <Route path="/gameover" element={<GameOverScreen />} />
+        <Route path="/game" element={<GameOnScreen setWinner={setWinner} />} />
+        <Route path="/gameover" element={<GameOverScreen winner={winner} />} />
       </Routes>
       <footer className="footer">
         <a className="footer-text">

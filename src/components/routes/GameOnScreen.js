@@ -10,12 +10,10 @@ import {
 } from "react-icons/gi";
 import { MdContentCut } from "react-icons/md";
 
-import GameOverScreen from "./GameOverScreen";
-
 import { randomNumber, determineWinner, fireGun } from "./functions";
-import { choiceArray, distractedArray } from "./textArrays";
+import { choiceArray } from "./textArrays";
 
-const GameOnScreen = () => {
+const GameOnScreen = ({ setWinner }) => {
   const [currentChamber, setCurrentChamber] = useState(0);
   const [bulletChamber, setBulletChamber] = useState(
     Math.floor(Math.random() * 6)
@@ -29,8 +27,6 @@ const GameOnScreen = () => {
 
   const [shootResult, setShootResult] = useState("");
   const [screenText, setScreenText] = useState("");
-
-  const [winner, setWinner] = useState("");
 
   const getRoundResult = (UC) => {
     setScreenText("");
@@ -126,8 +122,8 @@ const GameOnScreen = () => {
         </button>
       )}
       {gameOverButton && (
-        <Link to="/gameover" className="next-button">
-          NEXT
+        <Link to="/gameover">
+          <button className="next-button">NEXT</button>
         </Link>
       )}
     </div>

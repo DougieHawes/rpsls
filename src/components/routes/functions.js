@@ -1,10 +1,19 @@
-import { choiceArray } from "./textArrays";
+import {
+  choiceArray,
+  distractedArray,
+  sheldonDefeatLines,
+  sheldonVictoryLines,
+  tieQuotes,
+} from "./textArrays";
 
 export const randomNumber = (n) => Math.floor(Math.random() * n);
 
 export function determineWinner(UC, CC) {
   if (UC === CC) {
-    return [`Ah! You picked ${choiceArray[UC]} too, let's go again`, "tie"];
+    return [
+      `Ah! You picked ${choiceArray[UC]} too, ${tieQuotes[randomNumber(6)]}`,
+      "tie",
+    ];
   }
 
   const winningConditions = {
@@ -15,10 +24,14 @@ export function determineWinner(UC, CC) {
     4: [0, 2], // Spock beats Rock & Scissors
   };
 
-  if (winningConditions[UC].includes(CC)) {
-    return ["Dammit! How could you beat me?!", "win"];
+  const computerDistracted = randomNumber(20) === 0;
+
+  if (computerDistracted) {
+    return [distractedArray[randomNumber(6)], "win"];
+  } else if (winningConditions[UC].includes(CC)) {
+    return [sheldonDefeatLines[randomNumber(6)], "win"];
   } else {
-    return ["I WIN!! Don't feel too bad, you're just a muggle", "lose"];
+    return [sheldonVictoryLines[randomNumber(6)], "lose"];
   }
 }
 
